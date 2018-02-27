@@ -9,7 +9,6 @@ import { ListaDeseosService } from './services/lista-deseos.service';
 //pipes
 import { PlaceHolderPipe } from '../app/pipes/placeholder.pipe';
 import { PendientesPipe } from '../app/pipes/pendientes.pipe';
-import { TerminadasPipe } from '../app/pipes/terminadas.pipe';
 
 
 
@@ -29,7 +28,6 @@ import { DetalleComponent } from '../pages/detalle/detalle.component';
     MyApp,
     PlaceHolderPipe,
     PendientesPipe,
-    TerminadasPipe,
     PendientesComponent,
     TerminadosComponent,
     AgregarComponent,
