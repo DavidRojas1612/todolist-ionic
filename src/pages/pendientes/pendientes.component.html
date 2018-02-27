@@ -5,22 +5,25 @@
 </ion-header>
   
   <ion-content padding>
-    <ion-card *ngFor="let lista of _listaDeseos.listas">
-      <ion-card-header>
+    <ion-card *ngFor="let lista of _listaDeseos.listas | pendientes; let i = index">
+      <ion-item color="dark" (click)="verDetalle(lista, i);">
         {{lista.nombre}}
-        <hr>
-      </ion-card-header>
+        <ion-note item-rigth>
+          {{lista.items.length}} items
+        </ion-note>
+      </ion-item>
+      <hr>
       <ion-card-content>
         <ion-list>
-          <ion-item>
-            <ion-icon ios="ios-add-circle" md="md-add-circle"> cosa1</ion-icon>
+          <ion-item (click)="verDetalle(lista, i);"
+                    *ngFor="let item of lista.items | slice:0:2">
+            <ion-icon *ngIf="!item.completado" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+            <ion-icon *ngIf="item.completado" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+              {{item.nombre}}
           </ion-item>
-          <ion-item>
-            <ion-icon ios="ios-add-circle" md="md-add-circle"> cosa2</ion-icon>
-          </ion-item>
-          <ion-item>
-            <ion-icon ios="ios-add-circle" md="md-add-circle"> cosa3</ion-icon>
-          </ion-item>
+          <ion-item class="text-center" *ngIf="lista.items.length > 2">
+              <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown"></ion-icon>
+          </ion-item>  
         </ion-list>
       </ion-card-content>
 
